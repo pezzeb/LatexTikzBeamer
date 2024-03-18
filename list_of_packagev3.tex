@@ -1,0 +1,120 @@
+%%
+%*************Version 3***************************
+%%OBSERVERA VERSIONSNUMRERINGEN FORTSÄTTER ÄVEN OM FILNAMNET ÄR BYT
+%
+%Det som är nytt är att denna fil endast innehåller paket. Kommandon och miljöer har flyttats till en egen fil. har också rensat ut kommentarer som inte längre används.
+%
+%Jag har även fått gå tillbaka till natbib pga LIUs säkerhets policy
+%
+%%*************Version 2***************************
+%
+%Det som är nytt är att jag nu har gått över till biblatex istället för natbib, men alla gamla dokument bord vara kompatibla med den nya versionen men om inte så får den ligga kvar.
+%
+%
+%Observera att Tikz och pgfplots ligger i en egen fil eftersom att det är helt utanför scopet
+
+%%***************************************************
+\def\beamerOrArticlecomp{beamer}
+
+%%**************************************************
+
+%\usepackage[style=authoryear,
+%			citestyle=authoryear,
+%			maxcitenames=2,
+%			natbib=true,
+%			url=false,		%user-interface
+%			doi=false,		%user-interface
+%			isbn=false,		%user-interface (även denna som hanterar issn)
+%			eprint=false,	%user-interface
+%%			note=false,
+%			dashed=false,
+%			backend=biber]{biblatex}
+\usepackage{natbib}
+
+
+%\usepackage[swedish]{babel}
+\usepackage[swedish,english]{babel}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\ifx\beamerOrArticle\beamerOrArticlecomp %beamer - The first must you see yourself
+\usepackage[]{hyperref}
+\else %Not beamer
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+	\geometry{a4paper,total={210mm,297mm},left=20.4mm,right=20.4mm,	top=20.4mm,bottom=20.4mm}
+	\usepackage[shortlabels]{enumitem} %Detta är för att kunna justera itemize när man gör egna items
+	\SetLabelAlign{LeftAlignWithIndent}{\hspace*{2.0ex}\makebox[1.5em][l]{#1}}
+	\usepackage{parskip}
+\fi
+
+\usepackage{hhline}
+
+\usepackage{amsmath, amsthm, amssymb,dsfont,calc}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+
+\usepackage{makecell}
+
+%\usepackage{amsart}
+
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage[makeroom]{cancel} %Kunna strycka termer i härledningar
+\usepackage{multicol} %möjliggöra multiplier ac kolumner
+\usepackage{multirow} %möjliggöra multiplier ac kolumner
+
+
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{caption} 
+\usepackage{makeidx}	%För att skapa index 
+	\makeindex
+\usepackage{array}
+
+\usepackage{etoc} %This is for be able to use local tocs
+
+\ifx\beamerOrArticle\beamerOrArticlecomp
+\else
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Pontus Söderbäck}
+\rhead{\rightmark}
+
+\usepackage{titlesec}
+	\setcounter{secnumdepth}{4}%Lägger till en extra rubriknivpå
+	\titleformat{\paragraph}
+	{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+	\titlespacing*{\paragraph}
+	{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\fi
+
+\usepackage{longtable}			%Longer tables, table over multipline pappers, Latex will ``line-break'' itself
+%\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % FÖR ATT KUNNA CENTRERA OCH HA FIXT KOLUMNBREDD
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{P}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} %Detta är en gammal standard som ska fasas ut (införd 2018-09-13 ska fasas ut 2019-09-13)
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage{slashbox}
+
+\usepackage{adjustbox}
+%\usepackage{minibox}
+\usepackage{calculator}
+
+\usepackage{xcolor,colortbl}
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\usepackage{placeins}
+\usepackage[nomessages]{fp}
+
+
+\usepackage{scrextend}	
+\deffootnote[10pt]{10pt}{10pt}{\textsuperscript{\thefootnotemark}\,}
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\usepackage{tabto}
+

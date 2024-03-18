@@ -1,0 +1,12 @@
+\usepackage{tabto}
+
+\newcommand{\nologo}{\setbeamertemplate{logo}{}} % command to set the logo to nothing
+
+
+
+\newcommand{\tabbaIn}[2]{% \tabbaIn{\textbf{Tips: }}{Text att skriva} %Glöm INTE att skriva ut ett blanksteg efter kolon
+#1%
+\parbox[t]{\textwidth-\widthof{#1}}{#2}}
+
+\newcommand{\tabtorows}[3]{#1\tabto{#2}\parbox[t]{\textwidth-#2}{#3}} 
+

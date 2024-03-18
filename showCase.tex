@@ -1,0 +1,98 @@
+%\RequirePackage{kvoptions-patch} %
+\documentclass[]{beamer} % presentation mode - handout
+
+\input{./list_of_command_and_enviromentsv1.tex}
+\input{./beamer_list_of_package_and_command_newstyle_v1.tex}
+\input{./standard_tikzfilev1.tex}
+
+
+\usetheme[section=true,leftfoot=true,midfoot=true,rightfoot=true]{FiEFinancialEngineering} 
+%section=true ger en fot som orienterar åhörarna
+%leftfoot = true möjliggör att använda leftfoot  nedan
+%midfoot  = true möjliggör att använda midfoot   nedan
+%rightfoot= true möjliggör att använda rightfoot nedan
+%\lengthsection = default 1.0 är hur lång footline ska vara av sidbredd
+%\def\leftfoot{\insertframenumber\,/\,\inserttotalframenumber}
+%\def\midfoot{\textcopyright2019 JE och PS}
+%\def\rightfoot{Hej Jonas}
+%\def\lengthsection{0.8}
+
+%skapa logo att användamycket
+\logo{%
+%\begin{tikzpicture}[overlay,remember picture]   
+%	\node[anchor=south east] at ($ (current page.south east)+(+3ex,6ex) $) (abc) {\includegraphics[scale=0.22,keepaspectratio]{./liu.pdf}};
+%\end{tikzpicture}
+} 
+
+%\setbeamercolor{frametitle}{fg=black,bg=white}                          % för att ändra textfärg i framens titel (bakgrunden går ej att ändra korrekt)
+%\setbeamercolor{section in head/foot}{fg=white,bg=FiEblue}              %Färg på sektionsnamnet i foten white när aktiv och blekt FiEblue när inaktiv
+\setbeamercolor{title}{fg=black,bg=white}                                %Titel på första sidan
+\setbeamercolor{line under frame title}{fg=FiEblue,bg=FiEblue!20!white}  %Färg på strecket undre framens titel - om man sätter två olika så får man en gradient, där fg är till vänster
+%\setbeamercolor{box in foot}{fg=FiEblue,bg=FiEblue}                     %Färg på "boxen" i foten - om man sätter två olika så får man en gradient, där fg är till vänster
+
+\title[Small Title]{Large Title}
+\author[Pontus Söderbäck]{{\Large Pontus Söderbäck}\\$\quad$\\{\scriptsize Some Affiliation}}
+\date{March 18, 2024}
+
+%\beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{ 
+\setbeamertemplate{footline}{}
+\nologo
+\begin{frame}[noframenumbering]
+	\titlepage
+\end{frame}
+}
+
+\section{Section 1}
+\begin{frame}
+\frametitle{First Frame in Section 1}
+\begin{itemize}
+	\item Bullet
+\begin{itemize}
+	\item Bullet
+\end{itemize}
+	\item Bullet
+	\item Bullet
+	\begin{itemize}
+	\item Bullet
+	\item Bullet
+	\end{itemize}
+\end{itemize}
+
+\note{
+\begin{itemize}
+	\item Bullet
+	\begin{itemize}
+		\item Bullet
+	\end{itemize}
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}\frametitle{Frame 2 in Section 1!}
+	Some information.
+\end{frame}
+
+
+\section{Section 2}
+\begin{frame}{Frame 1 in Section 2}
+Some more information here in section 2.
+\end{frame}
+
+\section{The Last One}
+\begin{frame}\frametitle{Very important}
+	First frame of three slide in Section 3.
+\end{frame}
+\begin{frame}\frametitle{Very important}
+	Second frame of three slide in Section 3.
+\end{frame}
+\begin{frame}\frametitle{Very important}
+	Third and final frame of three slide in Section 3.
+\end{frame}
+
+\end{document}

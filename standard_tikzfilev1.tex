@@ -1,0 +1,71 @@
+%%STANDARD TIKZ FILE
+\usepackage[absolute,overlay]{textpos}
+%\usepackage[final]{animate}
+\usepackage{pgfplots}
+	\usepgfplotslibrary{fillbetween}
+	\usepgfplotslibrary{dateplot}
+	\pgfplotsset{compat=1.14}
+
+%PRESENTATION DOUBLED WIDTH
+\usepackage{pgfpages} %%OBSERVERA ATT DET STÅR pGfpagers
+\usepackage{tikz}
+	\usetikzlibrary{positioning, calc}
+		\tikzset{circle node/.style = {circle,inner sep=1pt,draw, fill=white},
+			X node/.style = {fill=white, inner sep=1pt},
+			dot node/.style = {circle, draw, inner sep=5pt}
+		}
+		\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+			%default radius will be 1pt. 
+	cross/.default={3.5pt}}
+	\usetikzlibrary{decorations.markings}
+	\usetikzlibrary{decorations.pathreplacing}
+	\usetikzlibrary{decorations.pathmorphing}
+	\usetikzlibrary{decorations.fractals}
+	\usetikzlibrary{shapes}
+		\usetikzlibrary{shapes.geometric}
+		\usetikzlibrary{shapes.misc}
+	\usetikzlibrary{arrows}
+		\usetikzlibrary{arrows.meta}
+	\usetikzlibrary{spy}
+	\usetikzlibrary{shadings}
+	\usetikzlibrary{lindenmayersystems}
+	\usetikzlibrary{patterns}
+	\usetikzlibrary{shapes.arrows,shapes.multipart}
+	\usetikzlibrary{pgfplots.groupplots}
+\usepackage{flowchart}
+	
+%Plot Normal Distribution
+\pgfmathdeclarefunction{gauss}{2}{%
+	\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+
+\tikzset{
+    declare function={
+        normcdf(\x,\m,\s)=1/(1 + exp(-0.07056*((\x-\m)/\s)^3 - 1.5976*(\x-\m)/\s));
+    }
+}
+%Scala tikzpicture with axis in it	
+\pgfkeys{/pgfplots/scale/.style={
+		x post scale=#1,
+		y post scale=#1,
+		z post scale=#1}
+}
+\pgfkeys{/pgfplots/axis labels at tip/.style={
+		xlabel style={at={(current axis.right of origin)}, xshift=1.5ex, anchor=center},
+		ylabel style={at={(current axis.above origin)}, yshift=1.5ex, anchor=center}}
+}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+	%default radius will be 1pt. 
+	cross/.default={3.5pt}}
+
+
+%%EGNA KONVENTIONER
+	\tikzstyle{block}= [rectangle, draw, fill=white, text centered,align=center,minimum height=1.0cm,minimum width=2.0cm]
+	\tikzstyle{elli} = [ellipse, draw, fill=white, text centered]
+	\tikzstyle{textblock} = [rectangle, draw=none, fill=none, text centered,align=center]
+	
+	\tikzstyle{line} = [draw, -latex,thin]
+	\tikzstyle{plainline} = [draw,thin]
+	\tikzstyle{doubleline} = [draw,latex-latex,thin]
+	\tikzstyle{dline} = [draw,dotted,thin,-latex]
+	\tikzstyle{dashline} = [draw,dashed,thin,-latex]

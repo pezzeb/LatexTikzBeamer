@@ -1,0 +1,27 @@
+% Copyright 2019 Pontus Söderbäck
+%
+\mode<presentation>
+
+\RequirePackage{textcomp}
+
+%This sends the option to the outertheme
+\DeclareOptionBeamer{section}{\PassOptionsToPackage{section=#1}{beamerouterthemeFiEFinancialEngineering}}
+\ProcessOptionsBeamer
+\DeclareOptionBeamer{leftfoot}{\PassOptionsToPackage{leftfoot=#1}{beamerouterthemeFiEFinancialEngineering}}
+\ProcessOptionsBeamer
+\DeclareOptionBeamer{midfoot}{\PassOptionsToPackage{midfoot=#1}{beamerouterthemeFiEFinancialEngineering}}
+\ProcessOptionsBeamer
+\DeclareOptionBeamer{rightfoot}{\PassOptionsToPackage{rightfoot=#1}{beamerouterthemeFiEFinancialEngineering}}
+\ProcessOptionsBeamer
+
+\beamertemplatenavigationsymbolsempty
+
+\useoutertheme{FiEFinancialEngineering}
+%\usecolortheme{whale}
+%\usecolortheme{orchid}
+\useinnertheme{FiEFinancialEngineering}
+
+%\setbeamerfont{block title}{size={}}
+
+\mode
+<all>

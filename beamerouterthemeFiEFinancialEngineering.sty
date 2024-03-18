@@ -1,0 +1,123 @@
+% Copyright 2019 by Pontus Söderbäck
+%
+% 
+%\setbeamercolor{frametitle}{fg=black,bg=white}                  % för att ändra textfärg i framens titel (bakgrunden går ej att ändra korrekt)
+%\setbeamercolor{section in head/foot}{fg=white,bg=FiEblue}      %Färg på sektionsnamnet i foten white när aktiv och blekt FiEblue när inaktiv
+%\setbeamercolor{title}{fg=white,bg=FiEblue}                     %Titel på första sidan
+%\setbeamercolor{line under frame title}{fg=FiEblue,bg=FiEblue}  %Färg på strecket undre framens titel - om man sätter två olika så får man en gradient, där fg är till vänster
+%\setbeamercolor{box in foot}{fg=FiEblue,bg=FiEblue}             %Färg på "boxen" i foten - om man sätter två olika så får man en gradient, där fg är till vänster
+% 
+\definecolor{FiEblue}{RGB}{0,185,231}
+\definecolor{FiEturquoise}{RGB}{23,199,210}
+\definecolor{FiEgreen}{RGB}{0,207,181}
+
+\newif\ifbeamer@sb@section %PS
+\newif\ifbeamer@sb@sectionwithlogo %PS
+\newif\ifbeamer@sb@leftfoot %PS
+\newif\ifbeamer@sb@midfoot %PS
+\newif\ifbeamer@sb@rightfoot %PS
+
+\def\leftfoot{}
+\def\midfoot{}
+\def\rightfoot{}
+\def\lengthsection{1.0}
+
+%PS
+\DeclareOptionBeamer{section}[true]{\csname beamer@sb@section#1\endcsname}
+\ExecuteOptionsBeamer{section=true}
+\ProcessOptionsBeamer
+
+\DeclareOptionBeamer{leftfoot}{\csname beamer@sb@leftfoottrue\endcsname} %
+\ProcessOptionsBeamer
+\DeclareOptionBeamer{midfoot}{\csname beamer@sb@midfoottrue\endcsname} %
+\ProcessOptionsBeamer
+\DeclareOptionBeamer{rightfoot}{\csname beamer@sb@rightfoottrue\endcsname} %
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{section in head/foot}{fg=white,bg=FiEblue}
+\setbeamercolor{title}{fg=white,bg=FiEblue}
+\setbeamercolor{line under frame title}{fg=FiEblue,bg=FiEblue}%PS - glöm ej att ligga till \usebeamercolor
+\setbeamercolor{box in foot}{fg=FiEblue,bg=FiEblue}%PS - glöm ej att ligga till \usebeamercolor
+
+
+\beamer@compresstrue
+
+\AtBeginDocument{
+  {
+    \usebeamerfont*{headline}
+    \colorlet{global.bg}{bg}
+    \usebeamercolor{section in head/foot}
+    \usebeamercolor{frametitle}
+	\usebeamercolor{line under frame title} %THIS HAS TO BE HERE se ovan
+	\usebeamercolor{box in foot} 
+
+	\pgfdeclarehorizontalshading{beamer@frametitlePSshade}{0.5ex}{%
+		color(0cm)=(line under frame title.fg); color(\the\paperwidth)=(line under frame title.bg) 
+		%color(0cm)=(line under frame title.fg); color(0.5*\the\paperwidth)=(red); color(\the\paperwidth)=(line under frame title.bg) 
+		%rgb(0cm)=(0,0.72265625,0.90234375); color(\the\paperwidth)=(white)
+	}
+	\pgfdeclarehorizontalshading{beamer@bottomPSshade}{7ex}{%
+		color(0cm)=(box in foot.fg); color(\lengthsection\paperwidth)=(box in foot.bg) 
+		%rgb(0cm)=(0,0.72265625,0.90234375); color(\the\paperwidth)=(white)
+	}
+  }
+}
+
+\defbeamertemplate*{footline}{smoothbars theme}
+{%
+
+  \ifbeamer@sb@section%
+	  \pgfuseshading{beamer@bottomPSshade}%
+	  \vskip-7ex%
+	  \begin{beamercolorbox}[ignorebg,ht=2.25ex,dp=3.75ex]{section in head/foot}
+	    \insertnavigation{\lengthsection\paperwidth}
+	  \end{beamercolorbox}%
+  \else
+	\hbox{%
+	  \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.25ex,dp=1ex,left]{temp in head/foot}%
+		\ifbeamer@sb@leftfoot
+		  \hspace*{0.3cm}\color{black}\leftfoot
+	    \else
+	      vänster
+		  %uttryck om ingen sidnum anges
+	    \fi
+	  \end{beamercolorbox}%
+	  \begin{beamercolorbox}[wd=.40\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+		  \ifbeamer@sb@midfoot
+		     \midfoot
+%			\textcopyright\beamer@X@midfoot
+		  \else
+		    mitt
+			%uttryck om ingen midfoot anges
+		  \fi
+	  \end{beamercolorbox}%
+	  \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+		  \ifbeamer@sb@rightfoot
+		     \rightfoot
+%			\textcopyright\beamer@X@midfoot
+		  \else
+		  höger
+			%uttryck om ingen midfoot anges
+		  \fi
+	  \end{beamercolorbox}%
+	}
+  \fi
+}%
+
+
+
+
+\defbeamertemplate*{frametitle}{smoothbars theme}
+{\insertframetitle\par\vskip-11pt%\usebeamerfont*{frametitle}
+%  \nointerlineskip
+\begin{beamercolorbox}[wd=\paperwidth,ht=.5ex,dp=0ex]{empty}
+	\pgfuseshading{beamer@frametitlePSshade}
+\end{beamercolorbox}%
+}
+  
+  
+\mode
+<all>

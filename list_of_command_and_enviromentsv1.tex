@@ -1,0 +1,221 @@
+%%ENVIROMENTS
+\newtheorem{mytheorem}{Theorem}
+	\newtheorem*{mytheorem*}{Theorem}
+		\newcommand{\mytheoremautorefname}{proposition}
+\newtheorem{myproof}{Proof}
+	\newtheorem*{myproof*}{Proof}
+		\newcommand{\myproofautorefname}{proposition}
+\newtheorem{mylemma}{Lemma}
+	\newtheorem*{mylemma*}{Lemma}
+		\newcommand{\mylemmaautorefname}{proposition}
+\newtheorem{mycor}{Corollary}
+	\newtheorem*{mycor*}{Corollary}
+		\newcommand{\mycorautorefname}{proposition}
+\newtheorem{mydef}{Definition}
+	\newtheorem*{mydef*}{Definition}
+		\newcommand{\mydefautorefname}{proposition}
+\newtheorem{myexample}{Example}
+	\newtheorem*{myexample*}{Example}
+		\newcommand{\myexampleautorefname}{proposition}
+\newtheorem{mycomment}{Comment}
+	\newtheorem*{mycomment*}{Comment}
+		\newcommand{\mycommentautorefname}{proposition}
+\newtheorem{mymoral}{Moral}
+	\newtheorem*{mymoral*}{Moral}
+		\newcommand{\mymoralautorefname}{proposition}
+\newtheorem{mynote}{Note}
+	\newtheorem*{mynote*}{Note}
+		\newcommand{\mynoteautorefname}{proposition}
+\newtheorem{myprop}{Proposition}
+	\newtheorem*{myprop*}{Proposition}
+		\newcommand{\mypropautorefname}{proposition}
+\newtheorem{myass}{Assumption}
+	\newtheorem*{myass*}{Assumption}
+		\newcommand{\myassautorefname}{assumption}
+\newtheorem{myremark}{Remark}
+	\newtheorem*{myremark*}{Remark}
+		\newcommand{\myremarkautorefname}{remark}
+%Det är för att få mellanrum innan definitioner och liknande
+\makeatletter
+\def\thm@space@setup{%
+	\thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+
+%%EGNA KOMMANDON
+\usepackage{xifthen} %Logik i kommdon
+\usepackage{ifthen}
+
+%Simplyfing - det är enbart kommandon som gör livet lite lättare
+\newcommand{\tover}[1]{\overline{\overline{#1}}} 
+\newcommand{\mb}[1]{\mathbf{#1}} 
+\newcommand{\mbb}[1]{\boldsymbol{#1}} 			%This is the almost the same as \mb but the behaviour of them differ for example the letter (small) f. 
+\newcommand{\mbo}[1]{\mathbf{\overline{#1}}} 
+\newcommand{\lv}[2]{\mathbf{#1}_{\{#2\}}} 
+
+%Om man vill ha stor bokstav i autoref (Paketet används inte längre utan är enbart för bakåt kompabilitet)
+\newcommand{\Autoref}[1]{\capitalisewords{\autoref{#1}}} 
+
+%%MATH - SETS 
+\newcommand{\RR}[1][]{\ifthenelse{\equal{#1}{}}{\mathbb{R}}{\mathbb{R}^{#1}}}
+\newcommand{\NN}[1][]{\ifthenelse{\equal{#1}{}}{\mathbb{N}}{\mathbb{N}^{#1}}}
+\newcommand{\ZZ}[1][]{\ifthenelse{\equal{#1}{}}{\mathbb{Z}}{\mathbb{Z}^{#1}}}
+\newcommand{\CC}[1][]{\ifthenelse{\equal{#1}{}}{\mathbb{C}}{\mathbb{C}^{#1}}}
+
+%%MATH - OPERATORS
+%\newcommand{\PP}[1]{\operatorname{P}\left(#1\right)}
+\newcommand{\PP}[1][]{\ifthenelse{\equal{#1}{}}{\operatorname{P}}{\operatorname{P}\left(#1\right)}}
+\newcommand{\PQ}[1][]{\ifthenelse{\equal{#1}{}}{\operatorname{Q}}{\operatorname{Q}\left(#1\right)}}
+
+\newcommand{\diag}[1]{\operatorname{diag}\left(#1\right)}
+\newcommand{\EE}[1]{\operatorname{E}\left[#1\right]}
+\newcommand{\EEb}[2]{\operatorname{E}\left[ \left.#1\right|#2 \right]}
+\newcommand{\EEE}[3]{\operatorname{E}_{#2}^{\operatorname{#3}}\left[#1\right]}
+\newcommand{\EEEb}[3]{\operatorname{E}^{\operatorname{#3}}\left[\left.#1\right|#2\right]}
+
+\newcommand{\V}[1]{\operatorname{Var}\left[#1\right]}
+\newcommand{\tr}[1]{\operatorname{Tr}\left[#1\right]}
+\newcommand{\TT}{{\intercal}}
+\newcommand{\Ordo}[1]{\mathcal{O}(#1)}
+\newcommand{\ordo}[1]{\textit{o}(#1)}
+
+\newcommand{\I}[1]{\operatorname{\mathds{1}}_{\left\{#1 \right\}}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[2]{\left|\left|#1\right|\right|_{#2}}
+
+%%KORTVERSIONER AV NAMN TILL OLIKA SPECIELLA BOKSTÄVSSTILAR
+%Operatorname
+\newcommand{\Ao}{{\operatorname{A}}}
+\newcommand{\Bo}{{\operatorname{B}}}
+\newcommand{\Co}{{\operatorname{C}}}
+\newcommand{\Do}{{\operatorname{D}}}
+\newcommand{\Eo}{{\operatorname{E}}}
+\newcommand{\Fo}{{\operatorname{F}}}
+\newcommand{\Go}{{\operatorname{G}}}
+\newcommand{\Ho}{{\operatorname{H}}}
+\newcommand{\Io}{{\operatorname{I}}}
+\newcommand{\Jo}{{\operatorname{J}}}
+\newcommand{\Ko}{{\operatorname{K}}}
+\newcommand{\Lo}{{\operatorname{L}}}
+\newcommand{\Mo}{{\operatorname{M}}}
+\newcommand{\No}{{\operatorname{N}}}
+\newcommand{\Oo}{{\operatorname{O}}}
+\newcommand{\Po}{{\operatorname{P}}}
+\newcommand{\Qo}{{\operatorname{Q}}}
+\newcommand{\Ro}{{\operatorname{R}}}
+\newcommand{\So}{{\operatorname{S}}}
+\newcommand{\To}{{\operatorname{T}}}
+\newcommand{\Uo}{{\operatorname{U}}}
+\newcommand{\Vo}{{\operatorname{V}}}
+\newcommand{\Wo}{{\operatorname{W}}}
+\newcommand{\Xo}{{\operatorname{X}}}
+\newcommand{\Yo}{{\operatorname{Y}}}
+\newcommand{\Zo}{{\operatorname{Z}}}
+
+%%Mathcal
+\newcommand{\Ac}{{\mathcal{A}}}
+\newcommand{\Bc}{{\mathcal{B}}}
+\newcommand{\Cc}{{\mathcal{C}}}
+\newcommand{\Dc}{{\mathcal{D}}}
+\newcommand{\Ec}{{\mathcal{E}}}
+\newcommand{\Fc}{{\mathcal{F}}}
+\newcommand{\Gc}{{\mathcal{G}}}
+\newcommand{\Hc}{{\mathcal{H}}}
+\newcommand{\Ic}{{\mathcal{I}}}
+\newcommand{\Jc}{{\mathcal{J}}}
+\newcommand{\Kc}{{\mathcal{K}}}
+\newcommand{\Lc}{{\mathcal{L}}}
+\newcommand{\Mc}{{\mathcal{M}}}
+\newcommand{\Nc}{{\mathcal{N}}}
+\newcommand{\Oc}{{\mathcal{O}}}
+\newcommand{\Pc}{{\mathcal{P}}}
+\newcommand{\Qc}{{\mathcal{Q}}}
+\newcommand{\Rc}{{\mathcal{R}}}
+\newcommand{\Sc}{{\mathcal{S}}}
+\newcommand{\Tc}{{\mathcal{T}}}
+\newcommand{\Uc}{{\mathcal{U}}}
+\newcommand{\Vc}{{\mathcal{V}}}
+\newcommand{\Wc}{{\mathcal{W}}}
+\newcommand{\Xc}{{\mathcal{X}}}
+\newcommand{\Yc}{{\mathcal{Y}}}
+\newcommand{\Zc}{{\mathcal{Z}}}
+
+%%MathS\mathscr
+\newcommand{\Ascr}{{\mathscr{A}}}
+\newcommand{\Bscr}{{\mathscr{B}}}
+\newcommand{\Cscr}{{\mathscr{C}}}
+\newcommand{\Dscr}{{\mathscr{D}}}
+\newcommand{\Escr}{{\mathscr{E}}}
+\newcommand{\Fscr}{{\mathscr{F}}}
+\newcommand{\Gscr}{{\mathscr{G}}}
+\newcommand{\Hscr}{{\mathscr{H}}}
+\newcommand{\Iscr}{{\mathscr{I}}}
+\newcommand{\Jscr}{{\mathscr{J}}}
+\newcommand{\Kscr}{{\mathscr{K}}}
+\newcommand{\Lscr}{{\mathscr{L}}}
+\newcommand{\Mscr}{{\mathscr{M}}}
+\newcommand{\Nscr}{{\mathscr{N}}}
+\newcommand{\Oscr}{{\mathscr{O}}}
+\newcommand{\Pscr}{{\mathscr{P}}}
+\newcommand{\Qscr}{{\mathscr{Q}}}
+\newcommand{\Rscr}{{\mathscr{R}}}
+\newcommand{\Sscr}{{\mathscr{S}}}
+\newcommand{\Tscr}{{\mathscr{T}}}
+\newcommand{\Uscr}{{\mathscr{U}}}
+\newcommand{\Vscr}{{\mathscr{V}}}
+\newcommand{\Wscr}{{\mathscr{W}}}
+\newcommand{\Xscr}{{\mathscr{X}}}
+\newcommand{\Yscr}{{\mathscr{Z}}}
+\newcommand{\Zscr}{{\mathscr{Y}}}
+
+%%Differential opertorer
+%\newcommand{\dx}{\operatorname{d}} %för att anvädna i integraler flr att få ett rakt d
+\newcommand{\dx}[1][]{\mathrm{d}^{#1}\!} 
+\newcommand{\dxx}[1][]{\dx \text{#1}}
+\newcommand{\Rp}[1][]{\ifthenelse{\equal{#1}{}}{\operatorname{Re}}{\operatorname{Re}\left\{#1\right\} }}
+\newcommand{\Ip}[1][]{\ifthenelse{\equal{#1}{}}{\operatorname{Im}}{\operatorname{Im}\left\{#1\right\} }}
+\DeclareMathOperator{\Log}{\operatorname{Log}}
+\DeclareMathOperator{\Ln}{\operatorname{Ln}}
+\DeclareMathOperator{\Arg}{\operatorname{Arg}}
+
+%Lite of sannolikhets och sigma-algebror
+\newcommand{\generator}[2]{{\mathcal{#1}(\mathcal{#2})}}
+\newcommand{\Bor}[1][]{\ifthenelse{\equal{#1}{}}{\mathcal{B}\left(\mathbb{R}\right)}{\mathcal{B}\left(\mathbb{R}^{#1}\right)}}
+
+\newcommand{\cc}[0]{\mathsf{c}}
+\newcommand{\prightarrow}{\stackrel{p}{\rightarrow}}
+\newcommand{\arightarrow}{\stackrel{a.s.}{\rightarrow}}
+\newcommand{\lprightarrow}[1]{\stackrel{L_{#1}}{\rightarrow}}
+\newcommand{\ninfty}{n\rightarrow\infty}
+\newcommand{\eqd}{\stackrel{d}{=}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\arcsinh}{arcsinh}
+\DeclareMathOperator*{\arccosh}{arccosh}
+\DeclareMathOperator*{\arctanh}{arctanh}
+
+%%COMMENTS
+\newcommand{\furl}[1]{\footnote{\url{#1}}}
+\newcommand{\tmcomment}[2]{	\ifthenelse{\equal{#1}{t}}{\left\{\text{#2}\right\}}{\left\{#2\right\}}	}
+
+\newcommand*{\crom}[1]{\circled{\rom{#1}}}
+
+
+%%ÖVRIGT
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}	%Detta är för att kunna rita fina streck i Matri
+\newcommand*{\horzbar}{\rule[.5ex]{4.5ex}{0.5pt}}
+\newcommand*{\ee}[1]{\cdot10^{#1}}
+%\newcommand*{\e}[1]{{\mathrm{e}^{#1}}}
+
+\newcommand{\e}[1][]{%
+\ifthenelse{\equal{#1}{}}{\mathrm{e}}{\mathrm{e}^{#1}}%
+}
+
+
+
+\newcommand{\rom}[1]{\textup{\uppercase\expandafter{\romannumeral#1}}} %Göra Romerska siffror
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}} %Få cirklar kring bnokstäver och siffror
+
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
